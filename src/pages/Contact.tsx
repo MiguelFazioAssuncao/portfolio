@@ -3,7 +3,7 @@
 import { Variants } from "framer-motion";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaInstagram, FaLinkedin} from "react-icons/fa";
+import { FaEnvelope, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -21,6 +21,7 @@ const fadeInUp: Variants = {
 const Contact = () => {
   const [formData, setFormData] = useState({ email: "", subject: "", message: "" });
   const [loading, setLoading] = useState(false);
+  const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -28,9 +29,22 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
 
-    const formUrl = "https://getform.io/f/ayvyoyyb"; 
+    if (!formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
+      setFeedbackMessage("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setFeedbackMessage("Por favor, insira um email válido.");
+      return;
+    }
+
+    setLoading(true);
+    setFeedbackMessage(null);
+
+    const formUrl = "https://getform.io/f/ayvyoyyb";
 
     const data = new FormData();
     data.append("email", formData.email);
@@ -44,13 +58,13 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        alert("Mensagem enviada com sucesso!");
+        setFeedbackMessage("Mensagem enviada com sucesso!");
         setFormData({ email: "", subject: "", message: "" });
       } else {
-        alert("Erro ao enviar mensagem, tente novamente.");
+        setFeedbackMessage("Erro ao enviar mensagem, tente novamente.");
       }
     } catch (error) {
-      alert("Erro ao enviar mensagem, tente novamente.");
+      setFeedbackMessage("Erro ao enviar mensagem, tente novamente.");
     } finally {
       setLoading(false);
     }
@@ -78,12 +92,9 @@ const Contact = () => {
           >
             Entre em Contato<span className="text-[#6366f1]">.</span>
           </motion.h2>
-          <motion.p
-            className="text-gray-400 leading-relaxed"
-            variants={fadeInUp}
-            custom={1}
-          >
-            Ficarei feliz em te responder! Me mande uma mensagem para ideias de projetos, colaborações ou qualquer pergunta.
+          <motion.p className="text-gray-400 leading-relaxed" variants={fadeInUp} custom={1}>
+            Ficarei feliz em te responder! Me mande uma mensagem para ideias de projetos, colaborações
+            ou qualquer pergunta.
           </motion.p>
 
           <div className="space-y-4">
@@ -148,6 +159,18 @@ const Contact = () => {
           >
             {loading ? "Enviando..." : "Enviar Mensagem"}
           </motion.button>
+
+          {feedbackMessage && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className={`mt-2 text-sm ${
+                feedbackMessage.includes("sucesso") ? "text-green-400" : "text-red-400"
+              }`}
+            >
+              {feedbackMessage}
+            </motion.p>
+          )}
         </motion.form>
       </motion.div>
     </motion.section>
@@ -200,12 +223,10 @@ const InputField = ({
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => (
-  <motion.div
-    className="flex flex-col gap-2"
-    whileHover={{ scale: 1.01 }}
-    transition={{ duration: 0.3 }}
-  >
-    <label htmlFor={id} className="text-sm text-gray-300">{label}</label>
+  <motion.div className="flex flex-col gap-2" whileHover={{ scale: 1.01 }} transition={{ duration: 0.3 }}>
+    <label htmlFor={id} className="text-sm text-gray-300">
+      {label}
+    </label>
     <input
       type="text"
       id={id}
@@ -230,12 +251,10 @@ const TextAreaField = ({
   value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }) => (
-  <motion.div
-    className="flex flex-col gap-2"
-    whileHover={{ scale: 1.01 }}
-    transition={{ duration: 0.3 }}
-  >
-    <label htmlFor={id} className="text-sm text-gray-300">{label}</label>
+  <motion.div className="flex flex-col gap-2" whileHover={{ scale: 1.01 }} transition={{ duration: 0.3 }}>
+    <label htmlFor={id} className="text-sm text-gray-300">
+      {label}
+    </label>
     <textarea
       id={id}
       rows={5}
