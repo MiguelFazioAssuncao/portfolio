@@ -19,18 +19,28 @@ const fadeInUp: Variants = {
 };
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ email: "", subject: "", message: "" });
+  const [formData, setFormData] = useState({
+    email: "",
+    subject: "",
+    message: "",
+  });
   const [loading, setLoading] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
+    if (
+      !formData.email.trim() ||
+      !formData.subject.trim() ||
+      !formData.message.trim()
+    ) {
       setFeedbackMessage("Por favor, preencha todos os campos.");
       return;
     }
@@ -92,28 +102,32 @@ const Contact = () => {
           >
             Entre em Contato<span className="text-[#6366f1]">.</span>
           </motion.h2>
-          <motion.p className="text-gray-400 leading-relaxed" variants={fadeInUp} custom={1}>
-            Ficarei feliz em te responder! Me mande uma mensagem para ideias de projetos, colaborações
-            ou qualquer pergunta.
+          <motion.p
+            className="text-gray-400 leading-relaxed"
+            variants={fadeInUp}
+            custom={1}
+          >
+            Ficarei feliz em te responder! Me mande uma mensagem para ideias de
+            projetos, colaborações ou qualquer pergunta.
           </motion.p>
 
-          <div className="space-y-4">
+          <div className="space-y-2 sm:space-y-4">
             <ContactItem
-              icon={<FaEnvelope className="text-xl text-white" />}
+              icon={<FaEnvelope className="text-lg sm:text-xl text-white" />}
               label="Email"
               value="miguelfaziodeassuncao@gmail.com"
               href="mailto:miguelfaziodeassuncao@gmail.com"
               index={2}
             />
             <ContactItem
-              icon={<FaLinkedin className="text-xl text-white" />}
+              icon={<FaLinkedin className="text-lg sm:text-xl text-white" />}
               label="LinkedIn"
               value="miguel-fazio-de-assunção"
               href="https://www.linkedin.com/in/miguel-fazio-de-assun%C3%A7%C3%A3o/"
               index={3}
             />
             <ContactItem
-              icon={<FaInstagram className="text-xl text-white" />}
+              icon={<FaInstagram className="text-lg sm:text-xl text-white" />}
               label="Instagram"
               value="miguel_fazio_"
               href="https://www.instagram.com/miguel_fazio_/"
@@ -165,7 +179,9 @@ const Contact = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className={`mt-2 text-sm ${
-                feedbackMessage.includes("sucesso") ? "text-green-400" : "text-red-400"
+                feedbackMessage.includes("sucesso")
+                  ? "text-green-400"
+                  : "text-red-400"
               }`}
             >
               {feedbackMessage}
@@ -196,16 +212,16 @@ const ContactItem = ({
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="flex items-center gap-4 group hover:scale-[1.03] transition-all"
+    className="flex items-center gap-3 sm:gap-4 group hover:scale-[1.03] transition-all"
     variants={fadeInUp}
     custom={index}
   >
-    <div className="bg-[#6366f1] w-10 h-10 flex items-center justify-center rounded-lg shadow-md group-hover:shadow-xl transition-all">
+    <div className="bg-[#6366f1] w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg shadow-md group-hover:shadow-xl transition-all">
       {icon}
     </div>
     <div>
-      <p className="text-sm font-medium">{label}</p>
-      <p className="text-sm text-gray-400">{value}</p>
+      <p className="text-xs sm:text-sm font-medium">{label}</p>
+      <p className="text-xs sm:text-sm text-gray-400">{value}</p>
     </div>
   </motion.a>
 );
@@ -223,7 +239,11 @@ const InputField = ({
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => (
-  <motion.div className="flex flex-col gap-2" whileHover={{ scale: 1.01 }} transition={{ duration: 0.3 }}>
+  <motion.div
+    className="flex flex-col gap-2"
+    whileHover={{ scale: 1.01 }}
+    transition={{ duration: 0.3 }}
+  >
     <label htmlFor={id} className="text-sm text-gray-300">
       {label}
     </label>
@@ -251,7 +271,11 @@ const TextAreaField = ({
   value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }) => (
-  <motion.div className="flex flex-col gap-2" whileHover={{ scale: 1.01 }} transition={{ duration: 0.3 }}>
+  <motion.div
+    className="flex flex-col gap-2"
+    whileHover={{ scale: 1.01 }}
+    transition={{ duration: 0.3 }}
+  >
     <label htmlFor={id} className="text-sm text-gray-300">
       {label}
     </label>
