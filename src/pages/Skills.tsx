@@ -18,6 +18,7 @@ import {
   SiNextdotjs,
   SiJavascript,
 } from "react-icons/si";
+import { useEffect, useState } from "react";
 
 const skills = [
   { icon: FaJava, name: "Java", color: "#f89820" },
@@ -53,6 +54,17 @@ const item = {
 };
 
 const Skills = () => {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => setIsDesktop(window.innerWidth >= 768);
+
+    checkScreen();
+
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
   return (
     <section
       id="habilidades"
@@ -99,18 +111,20 @@ const Skills = () => {
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <motion.div
-                className="absolute -inset-2 rounded-2xl blur-2xl opacity-0 group-hover:opacity-60 z-0"
-                animate={{ opacity: [0.4, 0.2, 0.4] }}
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  duration: 2,
-                }}
-                style={{
-                  background: skill.color,
-                }}
-              />
+              {isDesktop && (
+                <motion.div
+                  className="absolute -inset-2 rounded-2xl blur-2xl opacity-0 group-hover:opacity-60 z-0"
+                  animate={{ opacity: [0.4, 0.2, 0.4] }}
+                  transition={{
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                    duration: 2,
+                  }}
+                  style={{
+                    background: skill.color,
+                  }}
+                />
+              )}
               <div className="z-10 flex flex-col items-center justify-center px-1">
                 <skill.icon
                   className="text-xl sm:text-2xl md:text-3xl"
