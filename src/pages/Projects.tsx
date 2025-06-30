@@ -85,13 +85,11 @@ const Projects = () => {
                 height={600}
                 className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-[#0f1115]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-center px-6">
+              <div className="absolute inset-0 bg-[#0f1115]/90 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-center px-6">
                 <h3 className="text-2xl font-semibold text-[#3d9df3] mb-3">
                   {project.title}
                 </h3>
-                <p className="text-gray-300 text-sm mb-4">
-                  {project.description}
-                </p>
+                <p className="text-gray-300 text-sm mb-4">{project.description}</p>
                 <div className="flex flex-wrap justify-center gap-2 mb-4">
                   {project.tech.map((tech, i) => (
                     <span
