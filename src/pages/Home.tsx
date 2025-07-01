@@ -35,7 +35,12 @@ const Home = () => {
 
           <div className="mt-8">
             <button className="bg-[#3d9df3] text-black font-semibold px-6 py-3 rounded-full hover:bg-[#2563eb] transition cursor-pointer text-lg shadow-md">
-              <a href="#contato">Entre em contato</a> 
+              <a
+                href="/Curriculo%20-%20Miguel%20Fazio.docx.pdf"
+                download="Miguel_Fazio_Curriculo.pdf"
+              >
+                Baixar currículo
+              </a>
             </button>
           </div>
 
