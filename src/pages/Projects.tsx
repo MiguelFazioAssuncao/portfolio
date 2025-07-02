@@ -9,6 +9,7 @@ import busAppImage from "@/assets/busApp.png";
 import melodifyImage from "@/assets/melodify.png";
 import tutoriaImage from "@/assets/tutoria.jpg";
 import onibus from "@/assets/onibus.jpg";
+import biblioteca from "@/assets/biblioteca.png";
 
 const projects = [
   {
@@ -53,7 +54,7 @@ const projects = [
   },
   {
     title: "Biblioteca API",
-    image: "https://via.placeholder.com/800x600.png?text=Biblioteca+API",
+    image: biblioteca,
     description:
       "API para gerenciamento de livros, usuários, visitantes e empréstimos em uma biblioteca.",
     repo: "https://github.com/MiguelFazioAssuncao/biblioteca.git",
