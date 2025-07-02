@@ -40,7 +40,7 @@ const projects = [
     image: melodifyImage,
     description:
       "Aplicativo completo de reprodução de músicas com busca, playlists e player interativo.",
-    repo: "https://github.com/MiguelFazioAssuncao",
+    repo: "https://github.com/MiguelFazioAssuncao/melodify.git",
     tech: ["Angular", "TypeScript", "Bootstrap"],
   },
   {
@@ -48,9 +48,17 @@ const projects = [
     image: tutoriaImage,
     description:
       "API para gerenciamento de sessões de tutoria entre alunos e professores.",
-    repo: "https://github.com/MiguelFazioAssuncao",
-    tech: ["Node.js", "TypeScript"],
+    repo: "https://github.com/MiguelFazioAssuncao/tutoria.git",
+    tech: ["Java", "Spring Boot", "PostgreSQL"],
   },
+  {
+    title: "Biblioteca API",
+    image: "https://via.placeholder.com/800x600.png?text=Biblioteca+API",
+    description:
+      "API para gerenciamento de livros, usuários, visitantes e empréstimos em uma biblioteca.",
+    repo: "https://github.com/MiguelFazioAssuncao/biblioteca.git",
+    tech: ["Java", "Spring Boot", "PostgreSQL"],
+  }
 ];
 
 const Projects = () => {
