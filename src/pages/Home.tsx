@@ -34,14 +34,14 @@ const Home = () => {
           </p>
 
           <div className="mt-8">
-            <button className="bg-[#3d9df3] text-black font-semibold px-6 py-3 rounded-full hover:bg-[#2563eb] transition cursor-pointer text-lg shadow-md">
-              <a
-                href="/Curriculo%20-%20Miguel%20Fazio.docx.pdf"
-                download="Miguel_Fazio_Curriculo.pdf"
-              >
+            <a
+              href="/Curriculo%20-%20Miguel%20Fazio.docx.pdf"
+              download="Miguel_Fazio_Curriculo.pdf"
+            >
+              <button className="bg-[#3d9df3] text-black font-semibold px-6 py-3 rounded-full hover:bg-[#2563eb] transition cursor-pointer text-lg shadow-md">
                 Baixar currículo
-              </a>
-            </button>
+              </button>
+            </a>
           </div>
 
           <div className="flex items-center gap-4 mt-8 flex-wrap justify-center md:justify-start">
