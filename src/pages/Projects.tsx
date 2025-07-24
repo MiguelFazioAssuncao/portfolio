@@ -10,6 +10,7 @@ import melodifyImage from "@/assets/melodify.png";
 import tutoriaImage from "@/assets/tutoria.jpg";
 import onibus from "@/assets/onibus.jpg";
 import biblioteca from "@/assets/biblioteca.png";
+import cli from "@/assets/cli.png";
 
 const projects = [
   {
@@ -59,7 +60,14 @@ const projects = [
       "API para gerenciamento de livros, usuários, visitantes e empréstimos em uma biblioteca.",
     repo: "https://github.com/MiguelFazioAssuncao/biblioteca.git",
     tech: ["Java", "Spring Boot", "PostgreSQL"],
-  }
+  },
+  {
+    title: "FileManagerCli",
+    image: cli,
+    description: "CLI para manipulação de arquivos de texto",
+    repo: "https://github.com/MiguelFazioAssuncao/FileManagerCli.git",
+    tech: ["Java", "picocli"],
+  },
 ];
 
 const Projects = () => {
@@ -98,7 +106,9 @@ const Projects = () => {
                 <h3 className="text-2xl font-semibold text-[#3d9df3] mb-3">
                   {project.title}
                 </h3>
-                <p className="text-gray-300 text-sm mb-4">{project.description}</p>
+                <p className="text-gray-300 text-sm mb-4">
+                  {project.description}
+                </p>
                 <div className="flex flex-wrap justify-center gap-2 mb-4">
                   {project.tech.map((tech, i) => (
                     <span
