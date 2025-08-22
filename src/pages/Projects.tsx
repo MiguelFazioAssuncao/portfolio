@@ -11,8 +11,17 @@ import tutoriaImage from "@/assets/tutoria.jpg";
 import onibus from "@/assets/onibus.jpg";
 import biblioteca from "@/assets/biblioteca.png";
 import cli from "@/assets/cli.png";
+import chatweb from "@/assets/chatweb.png";
 
 const projects = [
+  {
+    title: "ChatWeb",
+    image: chatweb,
+    description:
+      "Aplicação web de chat em tempo real, com autenticação, salas privadas e integração entre frontend React, backend Java Spring Boot e WebSocket.",
+    repo: "https://github.com/MiguelFazioAssuncao/chat-web",
+    tech: ["TypeScript", "Java Spring Boot", "React"],
+  },
   {
     title: "DentePro",
     image: denteProImage,
