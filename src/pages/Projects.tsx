@@ -31,20 +31,12 @@ const projects = [
     tech: ["React", "Node.js", "TypeScript"],
   },
   {
-    title: "BusApp - Frontend",
+    title: "Bus App",
     image: busAppImage,
     description:
-      "Interface web de um aplicativo de mobilidade urbana voltado ao ambiente profissional, com visualização de rotas e horários de ônibus.",
-    repo: "https://github.com/MiguelFazioAssuncao/bus-app",
-    tech: ["Next.js", "Tailwind", "TypeScript"],
-  },
-  {
-    title: "BusApp - Backend",
-    image: onibus,
-    description:
-      "API REST robusta para gerenciamento de linhas de ônibus, usuários e autenticação com JWT, voltada para uso profissional.",
-    repo: "https://github.com/MiguelFazioAssuncao/bus-app-backend",
-    tech: ["Node.js", "TypeScript"],
+      "Aplicação para transporte público com frontend React e backend Node.js/Express. Integra SPTrans (Olho Vivo) e GraphHopper para planejamento de rotas, autenticação e posições de linhas em tempo real com mapa Leaflet.",
+    repo: "https://github.com/MiguelFazioAssuncao/bus-app-sa.git",
+    tech: ["JavaScript", "React", "Node.js"],
   },
   {
     title: "FileManagerCli",
