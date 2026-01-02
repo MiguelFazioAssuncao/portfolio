@@ -1,11 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaLaptopCode } from 'react-icons/fa';
+import { FaJava, FaAngular, FaNodeJs, FaDocker } from 'react-icons/fa';
+import { SiSpringboot } from 'react-icons/si';
 
 const About = () => {
   return (
-    <motion.section id='sobre'
+    <motion.section
+      id="sobre"
       initial={{ opacity: 0, y: 80 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, ease: 'easeOut' }}
@@ -13,6 +15,7 @@ const About = () => {
       className="min-h-screen bg-[#0f1115] text-white px-6 py-24 flex items-center justify-center"
     >
       <div className="max-w-5xl w-full flex flex-col md:flex-row gap-16 items-center">
+        {/* Texto */}
         <div className="flex-1 text-center md:text-left">
           <motion.h2
             initial={{ opacity: 0, scale: 0.9 }}
@@ -29,23 +32,31 @@ const About = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-lg text-gray-300 leading-relaxed"
           >
-            Sou <span className="text-[#3d9df3] font-semibold">Miguel Fazio</span>, desenvolvedor fullstack com
-            paixão por transformar ideias em experiências digitais modernas e eficientes.
-            Atuo com <span className="text-[#3d9df3]">React, Node.js, TypeScript</span> e outras tecnologias que fazem meus olhos brilhar.
+            Sou <span className="text-[#3d9df3] font-semibold">Miguel Fazio</span>, desenvolvedor
+            full stack focado em aplicações web.
+            Trabalho principalmente com
+            <span className="text-[#3d9df3] font-medium">
+              {' '}Java, Spring Boot e Angular
+            </span>,
+            desenvolvendo soluções bem estruturadas, com código organizado e foco em boas práticas.
           </motion.p>
 
+          {/* Ícones da stack */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="mt-6 flex justify-center md:justify-start gap-6 text-[#3d9df3] text-3xl"
+            className="mt-6 flex justify-center md:justify-start gap-6 text-4xl"
           >
-            <FaReact className="hover:text-cyan-400 transition-transform duration-300 hover:scale-110" />
-            <FaNodeJs className="hover:text-green-500 transition-transform duration-300 hover:scale-110" />
-            <FaLaptopCode className="hover:text-pink-500 transition-transform duration-300 hover:scale-110" />
+            <FaJava className="text-orange-500 hover:scale-110 transition-transform" />
+            <SiSpringboot className="text-green-500 hover:scale-110 transition-transform" />
+            <FaAngular className="text-red-500 hover:scale-110 transition-transform" />
+            <FaNodeJs className="text-green-400 hover:scale-110 transition-transform" />
+            <FaDocker className="text-blue-400 hover:scale-110 transition-transform" />
           </motion.div>
         </div>
 
+        {/* Card lateral */}
         <motion.div
           initial={{ opacity: 0, rotate: -10, scale: 0.9 }}
           whileInView={{ opacity: 1, rotate: 0, scale: 1 }}
@@ -54,7 +65,7 @@ const About = () => {
         >
           <div className="absolute inset-0 blur-3xl opacity-20 bg-gradient-to-br from-[#3d9df3] to-[#1f3b6c]" />
           <p className="text-white text-xl text-center px-6 z-10">
-            "Transformar códigos em soluções reais é o que me motiva todos os dias."
+            “Gosto de transformar regras de negócio em código limpo e soluções funcionais.”
           </p>
         </motion.div>
       </div>
