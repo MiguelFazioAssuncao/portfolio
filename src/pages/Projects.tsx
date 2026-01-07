@@ -4,14 +4,10 @@ import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 
-import denteProImage from "@/assets/dentePro.png";
 import busAppImage from "@/assets/busApp.png";
-import melodifyImage from "@/assets/melodify.png";
-import tutoriaImage from "@/assets/tutoria.jpg";
-import onibus from "@/assets/onibus.jpg";
-import biblioteca from "@/assets/biblioteca.png";
 import cli from "@/assets/cli.png";
 import chatweb from "@/assets/chatweb.png";
+import trustpay from "@/assets/trusty.png";
 
 const projects = [
   {
@@ -23,12 +19,12 @@ const projects = [
     tech: ["TypeScript", "Java Spring Boot", "React"],
   },
   {
-    title: "DentePro",
-    image: denteProImage,
+    title: "TrustPay - Digital Banking API",
+    image: trustpay,
     description:
-      "Aplicação web para gestão de clínica odontológica, com painel administrativo, cadastro de pacientes e agendamento de consultas.",
-    repo: "https://github.com/MiguelFazioAssuncao/dente-pro",
-    tech: ["React", "Node.js", "TypeScript"],
+      "API RESTful completa de banking digital com gestão de contas, transações, cartões, empréstimos e loja virtual integrada, construída com Spring Boot 4 e PostgreSQL.",
+    repo: "https://github.com/MiguelFazioAssuncao/trustpay",
+    tech: ["Java", "Spring Boot", "PostgreSQL"],
   },
   {
     title: "Bus App",
