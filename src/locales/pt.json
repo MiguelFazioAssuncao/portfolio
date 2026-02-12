@@ -1,0 +1,72 @@
+{
+  "header": {
+    "home": "Inicio",
+    "about": "Sobre",
+    "skills": "Habilidades",
+    "projects": "Projetos",
+    "contact": "Contato"
+  },
+  "home": {
+    "greeting": "Olá, eu sou",
+    "name": "Miguel Fazio",
+    "role": "Fullstack Developer",
+    "description": "Jovem apaixonado por tecnologia, sempre em busca de aprender e evoluir.",
+    "downloadCV": "Baixar currículo"
+  },
+  "about": {
+    "title": "Quem sou eu?",
+    "description": "Sou {name}, desenvolvedor full stack focado em aplicações web. Trabalho principalmente com {stack}, desenvolvendo soluções bem estruturadas, com código organizado e foco em boas práticas.",
+    "name": "Miguel Fazio",
+    "stack": "Java, Spring Boot e Angular",
+    "quote": "Gosto de transformar regras de negócio em código limpo e soluções funcionais."
+  },
+  "skills": {
+    "title": "Habilidades & Tecnologias"
+  },
+  "projects": {
+    "title": "Projetos",
+    "viewOnGithub": "Ver no GitHub",
+    "chatWeb": {
+      "title": "ChatWeb",
+      "description": "Aplicação web de chat em tempo real, com autenticação, salas privadas e integração entre frontend React, backend Java Spring Boot e WebSocket."
+    },
+    "trustPay": {
+      "title": "TrustPay - Digital Banking API",
+      "description": "API RESTful completa de banking digital com gestão de contas, transações, cartões, empréstimos e loja virtual integrada, construída com Spring Boot 4 e PostgreSQL."
+    },
+    "busApp": {
+      "title": "Bus App",
+      "description": "Aplicação para transporte público com frontend React e backend Node.js/Express. Integra SPTrans (Olho Vivo) e GraphHopper para planejamento de rotas, autenticação e posições de linhas em tempo real com mapa Leaflet."
+    },
+    "fileManager": {
+      "title": "FileManagerCli",
+      "description": "CLI para manipulação de arquivos de texto"
+    }
+  },
+  "contact": {
+    "title": "Entre em Contato",
+    "subtitle": "Ficarei feliz em te responder! Me mande uma mensagem para ideias de projetos, colaborações ou qualquer pergunta.",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram",
+    "form": {
+      "email": "Email",
+      "emailPlaceholder": "Digite seu email",
+      "subject": "Assunto",
+      "subjectPlaceholder": "Sobre o que deseja falar?",
+      "message": "Mensagem",
+      "messagePlaceholder": "Sua mensagem...",
+      "submit": "Enviar Mensagem",
+      "sending": "Enviando..."
+    },
+    "messages": {
+      "fillAllFields": "Por favor, preencha todos os campos.",
+      "invalidEmail": "Por favor, insira um email válido.",
+      "success": "Mensagem enviada com sucesso!",
+      "error": "Erro ao enviar mensagem, tente novamente."
+    }
+  },
+  "footer": {
+    "copyright": "© {year} Miguel Fazio de Assunção. Todos os direitos reservados."
+  }
+}

@@ -2,18 +2,21 @@
 
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageToggle from "@/components/LanguageToggle";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const links = [
-    { label: "Inicio", href: "#inicio" },
-    { label: "Sobre", href: "#sobre" },
-    { label: "Habilidades", href: "#habilidades" },
-    { label: "Projetos", href: "#projetos" },
-    { label: "Contato", href: "#contato" },
+    { label: t.header.home, href: "#inicio" },
+    { label: t.header.about, href: "#sobre" },
+    { label: t.header.skills, href: "#habilidades" },
+    { label: t.header.projects, href: "#projetos" },
+    { label: t.header.contact, href: "#contato" },
   ];
 
   return (
@@ -40,14 +43,18 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* Mobile Menu Icon */}
-        <button
-          className="md:hidden text-2xl text-white"
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <FaTimes /> : <FaBars />}
-        </button>
+        {/* Language Toggle and Mobile Menu Icon */}
+        <div className="flex items-center gap-4">
+          <LanguageToggle />
+
+          <button
+            className="md:hidden text-2xl text-white"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Slide + Styled */}
@@ -57,7 +64,7 @@ const Header = () => {
         }`}
       >
         <ul className="flex flex-col bg-[#1a1d22] border border-[#3d9df3]/30 rounded-xl shadow-lg p-6 gap-4 text-base font-medium">
-          {links.map(({ label, href }) => (
+          {links.map(({ label, href }, index) => (
             <li key={label}>
               <a
                 href={href}
@@ -66,7 +73,7 @@ const Header = () => {
               >
                 {label}
               </a>
-              {label !== "Contato" && (
+              {index !== links.length - 1 && (
                 <div className="h-px bg-[#3d9df3]/10 my-1" />
               )}
             </li>

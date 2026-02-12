@@ -1,0 +1,72 @@
+{
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Hello, I'm",
+    "name": "Miguel Fazio",
+    "role": "Fullstack Developer",
+    "description": "Young person passionate about technology, always seeking to learn and evolve.",
+    "downloadCV": "Download Resume"
+  },
+  "about": {
+    "title": "Who am I?",
+    "description": "I'm {name}, a full stack developer focused on web applications. I mainly work with {stack}, developing well-structured solutions with organized code and focus on best practices.",
+    "name": "Miguel Fazio",
+    "stack": "Java, Spring Boot, and Angular",
+    "quote": "I like to transform business rules into clean code and functional solutions."
+  },
+  "skills": {
+    "title": "Skills & Technologies"
+  },
+  "projects": {
+    "title": "Projects",
+    "viewOnGithub": "View on GitHub",
+    "chatWeb": {
+      "title": "ChatWeb",
+      "description": "Real-time web chat application with authentication, private rooms, and integration between React frontend, Java Spring Boot backend, and WebSocket."
+    },
+    "trustPay": {
+      "title": "TrustPay - Digital Banking API",
+      "description": "Complete RESTful digital banking API with account management, transactions, cards, loans, and integrated virtual store, built with Spring Boot 4 and PostgreSQL."
+    },
+    "busApp": {
+      "title": "Bus App",
+      "description": "Public transportation application with React frontend and Node.js/Express backend. Integrates SPTrans (Olho Vivo) and GraphHopper for route planning, authentication, and real-time bus positions with Leaflet map."
+    },
+    "fileManager": {
+      "title": "FileManagerCli",
+      "description": "CLI for text file manipulation"
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "I'd be happy to hear from you! Send me a message about project ideas, collaborations, or any questions.",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram",
+    "form": {
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "subject": "Subject",
+      "subjectPlaceholder": "What would you like to talk about?",
+      "message": "Message",
+      "messagePlaceholder": "Your message...",
+      "submit": "Send Message",
+      "sending": "Sending..."
+    },
+    "messages": {
+      "fillAllFields": "Please fill in all fields.",
+      "invalidEmail": "Please enter a valid email.",
+      "success": "Message sent successfully!",
+      "error": "Error sending message, please try again."
+    }
+  },
+  "footer": {
+    "copyright": "© {year} Miguel Fazio de Assunção. All rights reserved."
+  }
+}

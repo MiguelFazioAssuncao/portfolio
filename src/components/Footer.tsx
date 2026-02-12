@@ -2,6 +2,8 @@
 
 import { motion, Variants } from "framer-motion";
 import { FaEnvelope, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { interpolate } from "@/utils/interpolate";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -13,6 +15,8 @@ const fadeInUp: Variants = {
 };
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <motion.footer
       className="bg-transparent border-t border-t-[#3d9df3]/40 backdrop-blur-md text-gray-300 px-6 py-12"
@@ -23,7 +27,7 @@ const Footer = () => {
     >
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <p className="text-sm md:text-base select-none">
-          © {new Date().getFullYear()} Miguel Fazio de Assunção. Todos os direitos reservados.
+          {interpolate(t.footer.copyright, { year: new Date().getFullYear() })}
         </p>
 
         <div className="flex gap-6">
