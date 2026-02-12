@@ -4,6 +4,7 @@ import { Variants } from "framer-motion";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -19,6 +20,7 @@ const fadeInUp: Variants = {
 };
 
 const Contact = () => {
+  const { language } = useLanguage();
   const [formData, setFormData] = useState({
     email: "",
     subject: "",
@@ -26,6 +28,43 @@ const Contact = () => {
   });
   const [loading, setLoading] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
+
+  const translations = {
+    pt: {
+      title: "Entre em Contato",
+      subtitle: "Ficarei feliz em te responder! Me mande uma mensagem para ideias de projetos, colaborações ou qualquer pergunta.",
+      emailLabel: "Email",
+      emailPlaceholder: "Digite seu email",
+      subjectLabel: "Assunto",
+      subjectPlaceholder: "Sobre o que deseja falar?",
+      messageLabel: "Mensagem",
+      messagePlaceholder: "Sua mensagem...",
+      sendButton: "Enviar Mensagem",
+      sendingButton: "Enviando...",
+      successMessage: "Mensagem enviada com sucesso!",
+      errorMessage: "Erro ao enviar mensagem, tente novamente.",
+      fillAllFields: "Por favor, preencha todos os campos.",
+      invalidEmail: "Por favor, insira um email válido.",
+    },
+    en: {
+      title: "Get in Touch",
+      subtitle: "I'd be happy to respond! Send me a message for project ideas, collaborations or any questions.",
+      emailLabel: "Email",
+      emailPlaceholder: "Enter your email",
+      subjectLabel: "Subject",
+      subjectPlaceholder: "What do you want to talk about?",
+      messageLabel: "Message",
+      messagePlaceholder: "Your message...",
+      sendButton: "Send Message",
+      sendingButton: "Sending...",
+      successMessage: "Message sent successfully!",
+      errorMessage: "Error sending message, please try again.",
+      fillAllFields: "Please fill in all fields.",
+      invalidEmail: "Please enter a valid email.",
+    },
+  };
+
+  const t = translations[language];
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -41,13 +80,13 @@ const Contact = () => {
       !formData.subject.trim() ||
       !formData.message.trim()
     ) {
-      setFeedbackMessage("Por favor, preencha todos os campos.");
+      setFeedbackMessage(t.fillAllFields);
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      setFeedbackMessage("Por favor, insira um email válido.");
+      setFeedbackMessage(t.invalidEmail);
       return;
     }
 
@@ -68,13 +107,13 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        setFeedbackMessage("Mensagem enviada com sucesso!");
+        setFeedbackMessage(t.successMessage);
         setFormData({ email: "", subject: "", message: "" });
       } else {
-        setFeedbackMessage("Erro ao enviar mensagem, tente novamente.");
+        setFeedbackMessage(t.errorMessage);
       }
     } catch (error) {
-      setFeedbackMessage("Erro ao enviar mensagem, tente novamente.");
+      setFeedbackMessage(t.errorMessage);
     } finally {
       setLoading(false);
     }
@@ -100,15 +139,14 @@ const Contact = () => {
             variants={fadeInUp}
             custom={0}
           >
-            Entre em Contato<span className="text-[#6366f1]">.</span>
+            {t.title}<span className="text-[#6366f1]">.</span>
           </motion.h2>
           <motion.p
             className="text-gray-400 leading-relaxed"
             variants={fadeInUp}
             custom={1}
           >
-            Ficarei feliz em te responder! Me mande uma mensagem para ideias de
-            projetos, colaborações ou qualquer pergunta.
+            {t.subtitle}
           </motion.p>
 
           <div className="space-y-2 sm:space-y-4">
@@ -144,22 +182,22 @@ const Contact = () => {
         >
           <InputField
             id="email"
-            label="Email"
-            placeholder="Digite seu email"
+            label={t.emailLabel}
+            placeholder={t.emailPlaceholder}
             value={formData.email}
             onChange={handleChange}
           />
           <InputField
             id="subject"
-            label="Assunto"
-            placeholder="Sobre o que deseja falar?"
+            label={t.subjectLabel}
+            placeholder={t.subjectPlaceholder}
             value={formData.subject}
             onChange={handleChange}
           />
           <TextAreaField
             id="message"
-            label="Mensagem"
-            placeholder="Sua mensagem..."
+            label={t.messageLabel}
+            placeholder={t.messagePlaceholder}
             value={formData.message}
             onChange={handleChange}
           />
@@ -171,7 +209,7 @@ const Contact = () => {
             whileTap={{ scale: 0.97 }}
             className="bg-gradient-to-r from-[#6366f1] to-[#3d9df3] text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300 hover:shadow-[0_0_25px_#3d9df3] disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {loading ? "Enviando..." : "Enviar Mensagem"}
+            {loading ? t.sendingButton : t.sendButton}
           </motion.button>
 
           {feedbackMessage && (
@@ -179,7 +217,7 @@ const Contact = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className={`mt-2 text-sm ${
-                feedbackMessage.includes("sucesso")
+                feedbackMessage.includes(language === "pt" ? "sucesso" : "success")
                   ? "text-green-400"
                   : "text-red-400"
               }`}

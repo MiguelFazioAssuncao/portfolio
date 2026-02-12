@@ -6,8 +6,26 @@ import profile from "@/assets/profile.jpg";
 import SplitText from "@/components/SplitText";
 import CircularText from "@/components/CircularText";
 import { FaEnvelope, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Home = () => {
+  const { language } = useLanguage();
+
+  const translations = {
+    pt: {
+      greeting: "Olá, eu sou",
+      description: "Jovem apaixonado por tecnologia, sempre em busca de aprender e evoluir.",
+      downloadCV: "Baixar currículo",
+    },
+    en: {
+      greeting: "Hello, I'm",
+      description: "Young tech enthusiast, always seeking to learn and evolve.",
+      downloadCV: "Download CV",
+    },
+  };
+
+  const t = translations[language];
+
   return (
     <motion.div
       id="inicio"
@@ -18,7 +36,7 @@ const Home = () => {
     >
       <div className="max-w-6xl w-full flex flex-col md:flex-row items-center justify-between gap-16">
         <div className="flex-1 text-center md:text-left">
-          <p className="text-xl text-gray-400">Olá, eu sou</p>
+          <p className="text-xl text-gray-400">{t.greeting}</p>
           <h1 className="text-6xl md:text-7xl font-bold text-[#3d9df3] leading-tight drop-shadow-md">
             Miguel Fazio
           </h1>
@@ -29,8 +47,7 @@ const Home = () => {
           />
 
           <p className="mt-6 text-base text-gray-400 max-w-md md:max-w-lg leading-relaxed mx-auto md:mx-0">
-            Jovem apaixonado por tecnologia, sempre em busca de aprender e
-            evoluir.
+            {t.description}
           </p>
 
           <div className="mt-8">
@@ -39,7 +56,7 @@ const Home = () => {
               download="Miguel_Fazio_Curriculo.pdf"
             >
               <button className="bg-[#3d9df3] text-black font-semibold px-6 py-3 rounded-full hover:bg-[#2563eb] transition cursor-pointer text-lg shadow-md">
-                Baixar currículo
+                {t.downloadCV}
               </button>
             </a>
           </div>

@@ -3,8 +3,32 @@
 import { motion } from 'framer-motion';
 import { FaJava, FaAngular, FaNodeJs, FaDocker } from 'react-icons/fa';
 import { SiSpringboot } from 'react-icons/si';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const About = () => {
+  const { language } = useLanguage();
+
+  const translations = {
+    pt: {
+      title: "Quem sou eu?",
+      intro: "Sou ",
+      description: ", desenvolvedor full stack focado em aplicações web. Trabalho principalmente com",
+      stack: " Java, Spring Boot e Angular",
+      outro: ", desenvolvendo soluções bem estruturadas, com código organizado e foco em boas práticas.",
+      quote: "\"Gosto de transformar regras de negócio em código limpo e soluções funcionais.\"",
+    },
+    en: {
+      title: "Who am I?",
+      intro: "I'm ",
+      description: ", a full stack developer focused on web applications. I mainly work with",
+      stack: " Java, Spring Boot and Angular",
+      outro: ", developing well-structured solutions, with organized code and focus on best practices.",
+      quote: "\"I like to transform business rules into clean code and functional solutions.\"",
+    },
+  };
+
+  const t = translations[language];
+
   return (
     <motion.section
       id="sobre"
@@ -23,7 +47,7 @@ const About = () => {
             transition={{ duration: 0.7 }}
             className="text-5xl font-bold mb-6 text-[#3d9df3] drop-shadow-md"
           >
-            Quem sou eu?
+            {t.title}
           </motion.h2>
 
           <motion.p
@@ -32,13 +56,11 @@ const About = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-lg text-gray-300 leading-relaxed"
           >
-            Sou <span className="text-[#3d9df3] font-semibold">Miguel Fazio</span>, desenvolvedor
-            full stack focado em aplicações web.
-            Trabalho principalmente com
+            {t.intro}<span className="text-[#3d9df3] font-semibold">Miguel Fazio</span>{t.description}
             <span className="text-[#3d9df3] font-medium">
-              {' '}Java, Spring Boot e Angular
-            </span>,
-            desenvolvendo soluções bem estruturadas, com código organizado e foco em boas práticas.
+              {t.stack}
+            </span>
+            {t.outro}
           </motion.p>
 
           {/* Ícones da stack */}
@@ -65,7 +87,7 @@ const About = () => {
         >
           <div className="absolute inset-0 blur-3xl opacity-20 bg-gradient-to-br from-[#3d9df3] to-[#1f3b6c]" />
           <p className="text-white text-xl text-center px-6 z-10">
-            “Gosto de transformar regras de negócio em código limpo e soluções funcionais.”
+            {t.quote}
           </p>
         </motion.div>
       </div>

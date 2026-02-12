@@ -19,6 +19,7 @@ import {
   SiJavascript,
 } from "react-icons/si";
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const skills = [
   { icon: FaJava, name: "Java", color: "#f89820" },
@@ -55,6 +56,18 @@ const item = {
 
 const Skills = () => {
   const [isDesktop, setIsDesktop] = useState(false);
+  const { language } = useLanguage();
+
+  const translations = {
+    pt: {
+      title: "Habilidades & Tecnologias",
+    },
+    en: {
+      title: "Skills & Technologies",
+    },
+  };
+
+  const t = translations[language];
 
   useEffect(() => {
     const checkScreen = () => setIsDesktop(window.innerWidth >= 768);
@@ -77,7 +90,7 @@ const Skills = () => {
         transition={{ duration: 0.8 }}
         viewport={{ once: false }}
       >
-        Habilidades & Tecnologias
+        {t.title}
       </motion.h2>
 
       <div className="absolute left-0 top-0 h-full w-48 bg-gradient-to-r from-[#0f1115] via-[#0f1115cc] to-transparent z-20 pointer-events-none" />

@@ -2,19 +2,36 @@
 
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
-  const links = [
-    { label: "Inicio", href: "#inicio" },
-    { label: "Sobre", href: "#sobre" },
-    { label: "Habilidades", href: "#habilidades" },
-    { label: "Projetos", href: "#projetos" },
-    { label: "Contato", href: "#contato" },
-  ];
+  const translations = {
+    pt: {
+      links: [
+        { label: "Inicio", href: "#inicio" },
+        { label: "Sobre", href: "#sobre" },
+        { label: "Habilidades", href: "#habilidades" },
+        { label: "Projetos", href: "#projetos" },
+        { label: "Contato", href: "#contato" },
+      ],
+    },
+    en: {
+      links: [
+        { label: "Home", href: "#inicio" },
+        { label: "About", href: "#sobre" },
+        { label: "Skills", href: "#habilidades" },
+        { label: "Projects", href: "#projetos" },
+        { label: "Contact", href: "#contato" },
+      ],
+    },
+  };
+
+  const links = translations[language].links;
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[#0f111580] backdrop-blur-md text-white shadow-md transition-all duration-700">
@@ -24,7 +41,7 @@ const Header = () => {
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex">
+        <nav className="hidden md:flex items-center gap-8">
           <ul className="flex gap-8 text-base font-medium">
             {links.map(({ label, href }) => (
               <li
@@ -38,6 +55,15 @@ const Header = () => {
               </li>
             ))}
           </ul>
+
+          {/* Language Toggle Button */}
+          <button
+            onClick={toggleLanguage}
+            className="px-4 py-2 bg-[#3d9df3] hover:bg-[#2d8de3] text-white rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg"
+            aria-label="Toggle language"
+          >
+            {language === "pt" ? "EN" : "PT"}
+          </button>
         </nav>
 
         {/* Mobile Menu Icon */}
@@ -66,11 +92,22 @@ const Header = () => {
               >
                 {label}
               </a>
-              {label !== "Contato" && (
+              {label !== links[links.length - 1].label && (
                 <div className="h-px bg-[#3d9df3]/10 my-1" />
               )}
             </li>
           ))}
+
+          {/* Mobile Language Toggle Button */}
+          <li className="pt-2">
+            <button
+              onClick={toggleLanguage}
+              className="w-full px-4 py-2 bg-[#3d9df3] hover:bg-[#2d8de3] text-white rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg"
+              aria-label="Toggle language"
+            >
+              {language === "pt" ? "Switch to English" : "Mudar para Português"}
+            </button>
+          </li>
         </ul>
       </div>
     </header>

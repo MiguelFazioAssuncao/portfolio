@@ -7,10 +7,11 @@ import Skills from "@/pages/Skills";
 import Projects from "@/pages/Projects";
 import Contact from "@/pages/Contact";
 import Footer from "@/components/Footer";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 export default function Page() {
   return (
-    <>
+    <LanguageProvider>
       <Header/>
       <Home/>
       <About/>
@@ -18,6 +19,6 @@ export default function Page() {
       <Projects/>
       <Contact/>
       <Footer/>
-    </>
+    </LanguageProvider>
   );
 }
