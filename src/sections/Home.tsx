@@ -9,7 +9,10 @@ import { FaEnvelope, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Home = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  const resumeHref = language === "pt" ? "/curriculo-pt.docx.pdf" : "/resume-en.pdf";
+  const resumeFileName = language === "pt" ? "Miguel_Fazio_Curriculo.pdf" : "Miguel_Fazio_Resume.pdf";
 
   return (
     <motion.div
@@ -36,10 +39,7 @@ const Home = () => {
           </p>
 
           <div className="mt-8">
-            <a
-              href="/Curriculo%20-%20Miguel%20Fazio.docx.pdf"
-              download="Miguel_Fazio_Curriculo.pdf"
-            >
+            <a href={resumeHref} download={resumeFileName}>
               <button className="bg-[#3d9df3] text-black font-semibold px-6 py-3 rounded-full hover:bg-[#2563eb] transition cursor-pointer text-lg shadow-md">
                 {t.home.downloadCV}
               </button>
